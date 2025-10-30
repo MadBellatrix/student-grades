@@ -32,7 +32,8 @@ const AddStudentForm = ({ onStudentAdded }: AddStudentFormProps) => {
     try {
       // ✅ Konzept: String zu Number konvertieren mit expliziter Typisierung;
       const gradeAsNumber: number = parseFloat(formData.grade);
-      const response = await fetch("http://localhost:3000/api/students", {
+      const BASE_URL: string = (import.meta.env.VITE_API_URL as string) || "http://localhost:3000";
+      const response = await fetch(`${BASE_URL}/api/students`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
